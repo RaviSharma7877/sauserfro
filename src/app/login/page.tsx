@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import Link from 'next/link';
 import  Cookies  from 'js-cookie';
 import { redirect } from 'next/navigation'
-import { setCookie } from 'js-cookie';
+import  setCookie  from 'js-cookie';
 
 interface ValidationState {
     length: boolean;
