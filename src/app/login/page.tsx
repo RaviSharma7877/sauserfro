@@ -107,7 +107,7 @@ const Login = () => {
                     }, 1000);
                     var token = response.headers.get("Authorization");
                     if (token !== null) {
-                        Cookie.set("Token stored:", token);
+                        Cookie.set("jwt", token);
                     } else {
                         console.error("Authorization header not found in the response");
                     }
