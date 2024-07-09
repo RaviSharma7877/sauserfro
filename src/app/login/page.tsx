@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from "sonner";
 import Link from 'next/link';
-import  Cookie  from 'js-cookie';
+import  Cookies  from 'js-cookie';
+import { redirect } from 'next/navigation'
 
 interface ValidationState {
     length: boolean;
@@ -107,7 +108,9 @@ const Login = () => {
                     }, 1000);
                     var token = response.headers.get("Authorization");
                     if (token !== null) {
-                        Cookie.set("jwt", token);
+                        Cookies.set("jwt", token);
+                        redirect("http://localhost:3000/site")
+                        
                     } else {
                         console.error("Authorization header not found in the response");
                     }
