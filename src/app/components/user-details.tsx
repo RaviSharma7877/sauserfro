@@ -42,12 +42,6 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
             role: ''
         };
     
-        console.log(values.name);
-        console.log(values.username);
-        console.log(values.avatarUrl);
-        console.log(values.email);
-        console.log(values.role);
-    
         if (!values.name) tempErrors.name = "Name is required";
         if (!values.username) tempErrors.username = "Username is required";
         if (!values.avatarUrl) tempErrors.avatarUrl = "Invalid URL format";
@@ -66,10 +60,8 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
     
 
     const handleContinue = () => {
-        console.log("hiii")
         if (validate()) {
             nextStep();
-            console.log(nextStep());
         }
     };
 

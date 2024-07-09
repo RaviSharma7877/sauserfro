@@ -117,7 +117,7 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
                     'password': values.password,
                 };
 
-                const response = await fetch('http://localhost:8888/users', {
+                const response = await fetch('http://localhost:9999/users', {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"

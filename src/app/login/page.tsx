@@ -95,7 +95,7 @@ const Login = () => {
                 myHeaders.append("Authorization", authHeader);
 
                 // Send the GET request to the /signIn endpoint
-                const response = await fetch('http://localhost:8888/signIn', {
+                const response = await fetch('http://localhost:9999/signIn', {
                     method: "GET",
                     headers: myHeaders,
                     redirect: "follow",
