@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import Link from 'next/link';
 import  Cookies  from 'js-cookie';
 import { redirect } from 'next/navigation'
-import  setCookie  from 'js-cookie';
 
 interface ValidationState {
     length: boolean;
@@ -116,12 +115,7 @@ const Login = () => {
                         });
                         localStorage.setItem('jwt1', token); 
                         document.cookie = `jwt3=${token}; path=/; secure; HttpOnly`;
-                        setCookie('jwt5', token, {
-                            secure: true, // Only send the cookie over HTTPS
-                            sameSite: 'Strict', // Mitigate CSRF vulnerabilities
-                            path: '/', // Accessible across all paths in the domain
-                            httpOnly: true, // Prevent client-side script access
-                        });
+                        
                         redirect("http://localhost:3000/site")
                         
                     } else {
