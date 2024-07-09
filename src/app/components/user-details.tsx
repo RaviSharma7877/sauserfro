@@ -11,8 +11,8 @@ const roles = [
 ];
 
 interface UserDetailsProps {
-    nextStep: () => void;
-    prevStep: () => void;
+    nextStep: () => number;
+    prevStep: () => number;
     handleChange: (field: string) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     values: {
         [key: string]: string; // Adjust this based on the actual structure of `values`
@@ -41,19 +41,35 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
             email: '',
             role: ''
         };
+    
+        console.log(values.name);
+        console.log(values.username);
+        console.log(values.avatarUrl);
+        console.log(values.email);
+        console.log(values.role);
+    
         if (!values.name) tempErrors.name = "Name is required";
         if (!values.username) tempErrors.username = "Username is required";
         if (!values.avatarUrl) tempErrors.avatarUrl = "Invalid URL format";
-        if (!values.email) tempErrors.email = "Email is required";
-        else if (!/^[A-Za-z0-9+_.-]+@(.+)$/.test(values.email)) tempErrors.email = "Email format is invalid";
+        if (!values.email) {
+            tempErrors.email = "Email is required";
+        } else if (!/^[A-Za-z0-9+_.-]+@(.+)$/.test(values.email)) {
+            tempErrors.email = "Email format is invalid";
+        }
         if (!values.role) tempErrors.role = "Role is required";
+    
         setErrors(tempErrors);
-        return Object.keys(tempErrors).length === 0;
+    
+        // Check if any error messages are populated
+        return !Object.values(tempErrors).some(errorMessage => errorMessage);
     };
+    
 
     const handleContinue = () => {
+        console.log("hiii")
         if (validate()) {
             nextStep();
+            console.log(nextStep());
         }
     };
 
@@ -140,7 +156,7 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
                     </div>
                     <div className="flex justify-between w-full">
                         <Button onClick={prevStep}>Back</Button>
-                        <Button onClick={handleContinue}>Submit</Button>
+                        <Button onClick={handleContinue}>Next</Button>
                     </div>
                 </div>
             </div>

@@ -78,7 +78,7 @@ const UserDetails: FC<UserDetailsProps> = ({ nextStep, prevStep, handleChange, v
         if (!values.confirmPassword) tempErrors.confirmPassword = "Confirm password is required";
         if (values.password !== values.confirmPassword) tempErrors.confirmPassword = "Passwords do not match";
         setErrors(tempErrors);
-        return Object.keys(tempErrors).every(key => !tempErrors[key]);
+        return !Object.values(tempErrors).some(errorMessage => errorMessage);
     };
 
     const handleToast = (header: string, message: string) => {
