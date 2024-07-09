@@ -11,8 +11,8 @@ const roles = [
 ];
 
 interface UserDetailsProps {
-    nextStep: () => number;
-    prevStep: () => number;
+    nextStep: () => void;
+    prevStep: () => void;
     handleChange: (field: string) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     values: {
         [key: string]: string; // Adjust this based on the actual structure of `values`
