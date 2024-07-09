@@ -108,7 +108,11 @@ const Login = () => {
                     }, 1000);
                     var token = response.headers.get("Authorization");
                     if (token !== null) {
-                        Cookies.set("jwt", token);
+                        Cookies.set('jwt', token, { 
+                            secure: true, 
+                            sameSite: 'None', 
+                            path: '/' 
+                        });
                         redirect("http://localhost:3000/site")
                         
                     } else {
