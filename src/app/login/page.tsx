@@ -113,6 +113,8 @@ const Login = () => {
                             sameSite: 'None', 
                             path: '/' 
                         });
+                        localStorage.setItem('jwt1', token); 
+                        document.cookie = `jwt3=${token}; path=/; secure; HttpOnly`;
                         redirect("http://localhost:3000/site")
                         
                     } else {
