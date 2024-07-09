@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from "sonner";
 import Link from 'next/link';
+import  Cookie  from 'js-cookie';
 
 interface ValidationState {
     length: boolean;
@@ -105,7 +106,11 @@ const Login = () => {
                         handleToast("Welcome back! 🎉", "Login successful");
                     }, 1000);
                     var token = response.headers.get("Authorization");
-                    console.log("Token stored:", token);
+                    if (token !== null) {
+                        Cookie.set("Token stored:", token);
+                    } else {
+                        console.error("Authorization header not found in the response");
+                    }
                 } else {
                     console.log("Error:", response.status);
                     handleToast("Login failed", "Wrong password");
