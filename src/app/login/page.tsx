@@ -110,7 +110,8 @@ const Login = () => {
                     if (token !== null) {
                         Cookies.set('jwt', token, { 
                             secure: true, 
-                            sameSite: 'None', 
+                            sameSite: 'None',
+                            httpOnly: true,
                             path: '/' 
                         });
                         localStorage.setItem('jwt1', token); 
